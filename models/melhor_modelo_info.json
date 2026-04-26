@@ -1,0 +1,35 @@
+{
+  "nome_modelo": "RandomForestRegressor",
+  "target": "NPS",
+  "features": [
+    "complaints_count",
+    "delivery_delay_days",
+    "customer_service_contacts",
+    "resolution_time_days",
+    "delivery_time_days",
+    "delivery_attempts",
+    "order_value",
+    "items_quantity",
+    "discount_value",
+    "payment_installments",
+    "freight_value",
+    "customer_age",
+    "customer_tenure_months",
+    "repeat_purchase_30d",
+    "region_name_Centro-Oeste",
+    "region_name_Nordeste",
+    "region_name_Norte",
+    "region_name_Sudeste",
+    "region_name_Sul",
+    "nps_score"
+  ],
+  "hiperparametros": {
+    "n_estimators": 200,
+    "max_depth": 10,
+    "min_samples_split": 2,
+    "min_samples_leaf": 1,
+    "random_state": 42
+  },
+  "data_treinamento": "desafio_nps_fase_1.csv",
+  "proporcao_train_test": "80-20"
+}

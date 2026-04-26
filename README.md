@@ -6,56 +6,32 @@
 
 NPA Data Project
 
-## Project Organization
-
-```
-├── LICENSE            <- Open-source license if one is chosen
-├── Makefile           <- Makefile with convenience commands like `make data` or `make train`
-├── README.md          <- The top-level README for developers using this project.
-├── data
-│   ├── external       <- Data from third party sources.
-│   ├── interim        <- Intermediate data that has been transformed.
-│   ├── processed      <- The final, canonical data sets for modeling.
-│   └── raw            <- The original, immutable data dump.
-│
-├── docs               <- A default mkdocs project; see www.mkdocs.org for details
-│
-├── models             <- Trained and serialized models, model predictions, or model summaries
-│
-├── notebooks          <- Jupyter notebooks. Naming convention is a number (for ordering),
-│                         the creator's initials, and a short `-` delimited description, e.g.
-│                         `1.0-jqp-initial-data-exploration`.
-│
-├── pyproject.toml     <- Project configuration file with package metadata for 
-│                         tech_challenge_01 and configuration for tools like black
-│
-├── references         <- Data dictionaries, manuals, and all other explanatory materials.
-│
-├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
-│   └── figures        <- Generated graphics and figures to be used in reporting
-│
-├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
-│                         generated with `pip freeze > requirements.txt`
-│
-├── setup.cfg          <- Configuration file for flake8
-│
-└── tech_challenge_01   <- Source code for use in this project.
-    │
-    ├── __init__.py             <- Makes tech_challenge_01 a Python module
-    │
-    ├── config.py               <- Store useful variables and configuration
-    │
-    ├── dataset.py              <- Scripts to download or generate data
-    │
-    ├── features.py             <- Code to create features for modeling
-    │
-    ├── modeling                
-    │   ├── __init__.py 
-    │   ├── predict.py          <- Code to run model inference with trained models          
-    │   └── train.py            <- Code to train models
-    │
-    └── plots.py                <- Code to create visualizations
-```
+================================================================================
+ESTRUTURA DO PROJETO
+================================================================================
+📁 tech_challenge_01/
+├── 📄 Makefile                    - Comandos convenientes (make data, make lint, etc)
+├── 📄 pyproject.toml              - Configuração do projeto e dependências
+├── 📄 README.md                   - Documentação do projeto
+├── 📄 requirements.txt            - Dependências Python
+├── 📁 data/
+│   ├── external/                  - Dados de terceiros
+│   ├── interim/                   - Dados transformados
+│   ├── processed/                 - Dados finais para modelagem
+│   └── raw/
+│       └── desafio_nps_fase_1.csv - Dataset principal do desafio
+├── 📁 docs/                       - Documentação (mkdocs)
+├── 📁 models/                     - Modelos treinados e serializados
+├── 📁 notebooks/
+│   └── teach_challenge.ipynb      - Notebook principal de análise
+├── 📁 references/                 - Dicionários de dados e materiais explicativos
+├── 📁 reports/
+│   └── figures/                   - Gráficos e figuras geradas
+└── 📁 tech_challenge_01/          - Código fonte do projeto
+    ├── __init__.py
+    ├── config.py                  - Variáveis e configuração
+    ├── dataset.py                 - Scripts de download/geração de dados
+    └── features.py                - Código para criar features
 
 --------
 
@@ -68,17 +44,20 @@ Este projeto tem como objetivo prever o **Net Promoter Score (NPS)** atribuído 
 * **Linguagem:** Python
 * **Manipulação e Análise de Dados:** Pandas, NumPy, SciPy (Shapiro-Wilk)
 * **Visualização:** Matplotlib, Seaborn
-* **Machine Learning:** Scikit-Learn (Random Forest, Linear Regression, Metrics), XGBoost
+* **Machine Learning:** Scikit-Learn (Pipeline, StandardScaler, Random Forest, Gradient Boosting, Linear Regression, Metrics, GridSearchCV), XGBoost
 
 ## ⚙️ Estrutura do Fluxo de Trabalho
 1. **Análise Exploratória de Dados (EDA):** Verificação de distribuições, testes de normalidade e entendimento das variáveis de negócio (`order_value`, `delivery_delay_days`, etc.).
-2. **Pré-processamento:** Limpeza de dados e separação do conjunto em treino e teste (`train_test_split`).
+2. **Pré-processamento:** Limpeza de dados, codificação de variáveis categóricas (One-Hot Encoding) e separação em treino e teste.
 3. **Modelagem Baseline:** Estabelecimento de um modelo ingênuo (previsão da média) para servir de base comparativa.
-4. **Treinamento de Modelos:** * Regressão Linear
-   * Random Forest Regressor
+4. **Treinamento de Modelos:** 
+   * Regressão Linear
+   * Random Forest Regressor (com e sem `StandardScaler` em Pipeline)
+   * Gradient Boosting Regressor
    * XGBoost Regressor
 5. **Otimização:** Busca pelos melhores hiperparâmetros utilizando `GridSearchCV`.
-6. **Avaliação:** Comparação de performance utilizando métricas estatísticas robustas (MAE, RMSE e R²).
+6. **Avaliação e Interpretação:** Comparação de performance utilizando métricas estatísticas robustas (MAE, RMSE e R²). Extração das variáveis mais importantes (*Feature Importances*) e simulações de cenários de negócio (ex: impacto ao reduzir dias de atraso ou contatos de SAC).
+7. **Acionabilidade:** Criação de sistema para classificar o risco de detratores com base na nota prevista, auxiliando a atuação preventiva das equipes de CX.
 
 ## 🚀 Como Executar o Projeto
 
