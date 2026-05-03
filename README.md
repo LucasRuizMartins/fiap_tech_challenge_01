@@ -1,3 +1,6 @@
+
+Repostirório no github: https://github.com/LucasRuizMartins/fiap_tech_challenge_01
+
 # Tech_challenge_01
 
 
