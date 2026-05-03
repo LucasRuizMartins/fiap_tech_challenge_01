@@ -9,5 +9,10 @@ seaborn
 xgboost
 scipy
 jupyter
+scikit-learn
+xgboost
+numpy
+matplotlib
+seaborn
 
 -e .
